@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d4hrqnoqbk2yk"]
+
+[ext_resource type="Texture2D" uid="uid://bcea7re6ipr3q" path="res://Assets/PlayingCards 256x356.png" id="1_ttas4"]
+[ext_resource type="Texture2D" uid="uid://y82ofsch20wn" path="res://Assets/Card Backs 356x256.png" id="2_lpwkb"]
+
+[node name="Card" type="Node2D" unique_id=1072948959]
+
+[node name="Front" type="Sprite2D" parent="." unique_id=675929071]
+texture = ExtResource("1_ttas4")
+hframes = 13
+vframes = 4
+frame = 3
+
+[node name="Back" type="Sprite2D" parent="." unique_id=782770116]
+texture = ExtResource("2_lpwkb")
+hframes = 4
