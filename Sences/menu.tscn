@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b2i4qnvwvy17i" path="res://Scripts/Menu.cs" id="1_6p7na"]
 [ext_resource type="StyleBox" uid="uid://yiacs0ux5ep4" path="res://Resources/normal_button.tres" id="1_8ww1k"]
 [ext_resource type="StyleBox" uid="uid://ohsy5mehw77v" path="res://Resources/pressed_btn.tres" id="2_8ww1k"]
+[ext_resource type="Script" uid="uid://cfnllmbq808ig" path="res://Scripts/Button.cs" id="4_qf2d8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xkad"]
 bg_color = Color(0, 0, 0, 1)
@@ -36,3 +37,6 @@ theme_override_styles/normal = ExtResource("1_8ww1k")
 theme_override_styles/pressed = ExtResource("2_8ww1k")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8xkad")
 text = "Tạo phòng"
+script = ExtResource("4_qf2d8")
+
+[connection signal="pressed" from="Button" to="." method="_On_Btn_Pressed"]
