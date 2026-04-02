@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Godot;
 using SL.Scripts.Enums;
 using SL.Scripts.Event;
@@ -9,9 +10,9 @@ public class LoginState : GameState
 {
     public LoginState(StateMachine machine) : base(machine) { }
 
-    public override void Enter()
+    public override async void Enter()
     {
-        SceneManager.Instance.ChangeWorld(SceneType.Login);
+        await SceneManager.Instance.ChangeWorld(SceneType.Login);
     }
 
     public override void HandleEvent(object evt)
@@ -20,7 +21,7 @@ public class LoginState : GameState
         {
             Machine.Context.UserId = e.UserId;
             Machine.Context.Token = e.Token;
-
+            Machine.Context.Username = e.Username;
             Machine.ChangeState(GameStateType.Lobby);
         }
     }

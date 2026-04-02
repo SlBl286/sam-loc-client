@@ -12,8 +12,7 @@ public partial class SocketClient : Node
 
     public override void _Ready()
     {
-       _socket.ConnectToUrl("ws://127.0.0.1:8080");
-       Connected?.Invoke();
+
     }
 
     public override void _Process(double delta)
@@ -32,7 +31,6 @@ public partial class SocketClient : Node
         if (_socket.GetReadyState() == WebSocketPeer.State.Closed)
         {
             Disconnected?.Invoke();
-            return;
         }
     }
 
@@ -40,6 +38,7 @@ public partial class SocketClient : Node
     {
         var err = _socket.ConnectToUrl(url);
         GD.Print("Connecting: ", err);
+        Connected?.Invoke();
     }
 
     public void Send(object data)

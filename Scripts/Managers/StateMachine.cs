@@ -16,7 +16,7 @@ public partial class StateMachine : Node
     public StateContext Context { get; private set; }
 
     private Dictionary<GameStateType, GameState> _states = new();
-private Stack<GameState> _stack = new();
+    private Stack<GameState> _stack = new();
     private GameState _current;
     private GameState _global;
 
@@ -51,7 +51,7 @@ private Stack<GameState> _stack = new();
 
     void HandleEvent(object evt)
     {
-      _global?.HandleEvent(evt);
+        _global?.HandleEvent(evt);
 
         if (_stack.Count > 0)
             _stack.Peek().HandleEvent(evt);
@@ -59,24 +59,28 @@ private Stack<GameState> _stack = new();
 
     public void ChangeState(GameStateType type)
     {
-       while (_stack.Count > 0)
+        while (_stack.Count > 0)
             _stack.Pop().Exit();
 
         PushState(type);
     }
-     public void PushState(GameStateType type)
+    public void PushState(GameStateType type)
     {
         var state = _states[type];
 
         _stack.Push(state);
+        _current = state;
         state.Enter();
     }
 
-    public void PopState()
+    public void PopState(GameStateType type)
     {
         if (_stack.Count == 0)
             return;
 
-        _stack.Pop().Exit();
+        if (_current == _states[type])
+        {
+            _stack.Pop().Exit();
+        }
     }
 }

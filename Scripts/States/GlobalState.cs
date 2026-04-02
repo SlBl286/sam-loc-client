@@ -21,6 +21,11 @@ public class GlobalState : GameState
             {
                 Machine.ChangeState(GameStateType.Loading);
             }
+            else if (n.State == NetworkState.ApiRequestSucess)
+            {
+                Machine.PopState(GameStateType.Loading); // tắt loading
+            }
+            
         }
         if (evt is ShowPopupEvent p)
         {

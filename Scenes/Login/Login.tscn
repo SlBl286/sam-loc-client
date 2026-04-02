@@ -22,41 +22,49 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=927559542]
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=562491157]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=927559542]
+layout_mode = 2
+theme_override_constants/separation = 55
 alignment = 1
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=1376958492]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=1376958492]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Some lock"
 horizontal_alignment = 1
 
-[node name="UsernameInput" type="LineEdit" parent="Panel/VBoxContainer" unique_id=415824109]
+[node name="UsernameInput" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer" unique_id=415824109]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 placeholder_text = "Tài khoản"
 
-[node name="PasswordInput" type="LineEdit" parent="Panel/VBoxContainer" unique_id=1114005156]
+[node name="PasswordInput" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer" unique_id=1114005156]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 placeholder_text = "Mật khẩu"
 secret = true
 
-[node name="LoginBtn" type="Button" parent="Panel/VBoxContainer" unique_id=2011780889]
+[node name="LoginBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=2011780889]
 layout_mode = 2
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 55
 theme_override_styles/normal = ExtResource("1_o0nan")
 theme_override_styles/pressed = ExtResource("2_i06uo")
 theme_override_styles/hover = ExtResource("3_beys5")
 text = "Đăng nhập"
 
-[node name="ErrorLabel" type="Label" parent="Panel/VBoxContainer" unique_id=657008575]
+[node name="ErrorLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=657008575]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 horizontal_alignment = 1

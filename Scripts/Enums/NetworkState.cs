@@ -6,5 +6,6 @@ public enum NetworkState
     Connecting,
     Connected,
     Reconnecting,
-    ApiRequesting
+    ApiRequesting,
+    ApiRequestSucess
 }

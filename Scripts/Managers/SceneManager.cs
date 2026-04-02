@@ -1,5 +1,6 @@
 using Godot;
 using SL.Scripts.Enums;
+using SL.Scripts.Views;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 namespace SL.Scripts;
@@ -12,7 +13,7 @@ public partial class SceneManager : Node
 	private Node _uiLayer;
 	private Node _popupLayer;
 	private Node _loadingLayer;
-
+	private Transition _transition;
 	private Dictionary<string, PackedScene> _cache = new();
 	private Stack<Node> _uiStack = new();
 	private Dictionary<SceneType, string> _scenePaths = new()
@@ -33,6 +34,10 @@ public partial class SceneManager : Node
 		_uiLayer = GetNode("/root/Main/UILayer");
 		_popupLayer = GetNode("/root/Main/PopupLayer");
 		_loadingLayer = GetNode("/root/Main/LoadingLayer");
+
+		var transScene = GD.Load<PackedScene>("res://scenes/transition/Transition.tscn");
+		_transition = transScene.Instantiate<Transition>();
+		AddChild(_transition);
 	}
 
 	PackedScene LoadScene(string path)
@@ -69,21 +74,21 @@ public partial class SceneManager : Node
 	// UI Stack (push / pop)
 	// =========================
 
-public Node PushUI(SceneType type)
-{
-    if (!_scenePaths.ContainsKey(type))
-        return null;
+	public Node PushUI(SceneType type)
+	{
+		if (!_scenePaths.ContainsKey(type))
+			return null;
 
-    string path = _scenePaths[type];
+		string path = _scenePaths[type];
 
-    var scene = LoadScene(path);
-    var instance = scene.Instantiate();
+		var scene = LoadScene(path);
+		var instance = scene.Instantiate();
 
-    _uiLayer.AddChild(instance);
-    _uiStack.Push(instance);
+		_uiLayer.AddChild(instance);
+		_uiStack.Push(instance);
 
-    return instance;
-}
+		return instance;
+	}
 
 	public void PopUI()
 	{
@@ -98,20 +103,29 @@ public Node PushUI(SceneType type)
 	// World Scene
 	// =========================
 
-public void ChangeWorld(SceneType type)
-{
-    if (!_scenePaths.ContainsKey(type))
-        return;
+	public async Task ChangeWorld(SceneType type)
+	{
+		if (!_scenePaths.ContainsKey(type))
+			return;
 
-    string path = _scenePaths[type];
+		string path = _scenePaths[type];
 
-    ClearLayer(_worldLayer);
 
-    var scene = LoadScene(path);
-    var instance = scene.Instantiate();
+		await _transition.FadeIn();
 
-    _worldLayer.AddChild(instance);
-}
+		// Async load
+		var scene = await LoadSceneAsync(path);
+
+		// Remove scene cũ
+		ClearLayer(_worldLayer);
+
+		// Add scene mới
+		var _currentWorld = scene.Instantiate();
+		_worldLayer.AddChild(_currentWorld);
+
+		// Fade out
+		await _transition.FadeOut();
+	}
 
 	// =========================
 	// Popup
@@ -159,5 +173,22 @@ public void ChangeWorld(SceneType type)
 	{
 		foreach (Node child in layer.GetChildren())
 			child.QueueFree();
+	}
+
+	private async Task<PackedScene> LoadSceneAsync(string path)
+	{
+		ResourceLoader.LoadThreadedRequest(path);
+
+		while (true)
+		{
+			var status = ResourceLoader.LoadThreadedGetStatus(path);
+
+			if (status == ResourceLoader.ThreadLoadStatus.Loaded)
+			{
+				return ResourceLoader.LoadThreadedGet(path) as PackedScene;
+			}
+
+			await ToSignal(GetTree(), "process_frame");
+		}
 	}
 }

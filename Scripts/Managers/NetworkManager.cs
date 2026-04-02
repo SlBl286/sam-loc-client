@@ -33,7 +33,6 @@ public partial class NetworkManager : Node
     public void SetState(NetworkState state)
     {
         State = state;
-        GD.Print("Network state: ", state);
 
         EventBus.Publish(new NetworkStateChangedEvent
         {
@@ -43,10 +42,12 @@ public partial class NetworkManager : Node
     void OnConnected()
     {
         SetState(NetworkState.Connected);
+     
     }
 
     void OnDisconnected()
     {
         SetState(NetworkState.Disconnected);
+       
     }
 }

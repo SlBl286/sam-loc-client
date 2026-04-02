@@ -13,7 +13,7 @@ public class LobbyState : GameState
     {
         GD.Print("Enter Lobby");
 
-        await SceneManager.Instance.ChangeUI(SceneType.Lobby);
+        await SceneManager.Instance.ChangeWorld(SceneType.Lobby);
     }
  public override void HandleEvent(object evt)
     {

@@ -8,14 +8,6 @@
 [node name="Main" type="Node2D" unique_id=1261943765]
 script = ExtResource("1_kln2b")
 
-[node name="WorldLayer" type="Node" parent="." unique_id=1686006791]
-
-[node name="UILayer" type="Node" parent="." unique_id=1992725516]
-
-[node name="PopupLayer" type="Node" parent="." unique_id=1989016699]
-
-[node name="LoadingLayer" type="Node" parent="." unique_id=164245886]
-
 [node name="Manager" type="Node" parent="." unique_id=539943548]
 
 [node name="SceneManger" type="Node" parent="Manager" unique_id=1646526119]
@@ -26,3 +18,11 @@ script = ExtResource("3_pbw6q")
 
 [node name="NetworkManager" type="Node" parent="Manager" unique_id=368085602]
 script = ExtResource("4_rgh2o")
+
+[node name="WorldLayer" type="Node" parent="." unique_id=1686006791]
+
+[node name="UILayer" type="Node" parent="." unique_id=1992725516]
+
+[node name="PopupLayer" type="Node" parent="." unique_id=1989016699]
+
+[node name="LoadingLayer" type="Node" parent="." unique_id=164245886]

@@ -20,7 +20,7 @@ public class PopupState : GameState
     {
         if (evt is ClosePopupEvent)
         {
-            Machine.PopState();
+            Machine.PopState(Enums.GameStateType.Popup);
         }
     }
 }
