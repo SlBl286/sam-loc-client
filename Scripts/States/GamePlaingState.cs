@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using SL.Scripts.Enums;
 using SL.Scripts.Managers;
 
@@ -6,9 +7,9 @@ public class GamePlayingState : GameState
 {
     public GamePlayingState(StateMachine machine) : base(machine) { }
 
-    public override void Enter()
+    public override async void Enter()
     {
-        SceneManager.Instance.ChangeWorld(SceneType.GameTable);
+       await SceneManager.Instance.ChangeWorld(SceneType.GameTable);
     }
 
 

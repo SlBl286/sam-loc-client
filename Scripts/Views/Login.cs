@@ -50,14 +50,13 @@ public partial class Login : Control
 
 	void OnLoginError(ApiErrorEvent e)
 	{
-		_error.Text = "Login failed";
-		_loginBtn.Disabled = true;
+		_error.Text = "Đăng nhập thất bại";
+		_loginBtn.Disabled = false;
 
 	}
 
 	void OnLoginSuccess(LoginSuccessEvent e)
 	{
 		_loginBtn.Disabled = false;
-		StateMachine.Instance.ChangeState(GameStateType.Lobby);
 	}
 }

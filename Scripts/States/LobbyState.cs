@@ -11,7 +11,7 @@ public class LobbyState : GameState
 
     public override async void Enter()
     {
-        GD.Print("Enter Lobby");
+        GD.Print("Enter Lobby ");
 
         await SceneManager.Instance.ChangeWorld(SceneType.Lobby);
     }

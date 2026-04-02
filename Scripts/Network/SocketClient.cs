@@ -30,7 +30,6 @@ public partial class SocketClient : Node
 
         if (_socket.GetReadyState() == WebSocketPeer.State.Closed)
         {
-            Disconnected?.Invoke();
         }
     }
 

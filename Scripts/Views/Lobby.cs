@@ -1,52 +1,30 @@
 using Godot;
 using SL.Scripts.Core;
+using SL.Scripts.Managers;
 using System;
+using System.Reflection.PortableExecutable;
 
 namespace SL.Scripts.Views;
 
 public partial class Lobby : Control
 {
+		private Label _username;
 
-	// public override void _Ready()
-	// {
+	public override void _Ready()
+	{
 	
+    _username = GetNode<Label>("Panel/Username");
 
-	// 	EventBus.Subscribe<ApiErrorEvent>(OnLoginError);
-	// 	EventBus.Subscribe<LoginSuccessEvent>(OnLoginSuccess);
-	// }
+		_username.Text = StateMachine.Instance.Context.Username;
+	}
 
-	// public override void _ExitTree()
-	// {
-	// 	EventBus.Unsubscribe<ApiErrorEvent>(OnLoginError);
-	// 	EventBus.Unsubscribe<LoginSuccessEvent>(OnLoginSuccess);
-	// }
+	public override void _ExitTree()
+	{
+	
+	}
 
-	// void OnLoginPressed()
-	// {
-	// 	string username = _username.Text.Trim();
-	// 	string password = _password.Text.Trim();
 
-	// 	if (username == "" || password == "")
-	// 	{
-	// 		_error.Text = "Nhập username và password";
-	// 		return;
-	// 	}
 
-	// 	_error.Text = "Đang đăng nhập...";
-	// 	_loginBtn.Disabled = true;
-	// 	NetworkManager.Instance.Api.Login(username, password);
-	// }
 
-	// void OnLoginError(ApiErrorEvent e)
-	// {
-	// 	_error.Text = "Login failed";
-	// 	_loginBtn.Disabled = true;
 
-	// }
-
-	// void OnLoginSuccess(LoginSuccessEvent e)
-	// {
-	// 	_loginBtn.Disabled = false;
-	// 	StateMachine.Instance.ChangeState(GameStateType.Lobby);
-	// }
 }

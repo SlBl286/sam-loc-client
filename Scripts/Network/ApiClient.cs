@@ -75,7 +75,6 @@ public partial class ApiClient : Node
     void OnResponse(long result, long code, string[] headers, byte[] body)
     {
         string text = Encoding.UTF8.GetString(body);
-        GD.Print(text);
         NetworkManager.Instance.SetState(NetworkState.ApiRequestSucess);
 
         if (code != 200)

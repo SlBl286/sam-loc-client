@@ -67,7 +67,6 @@ public partial class StateMachine : Node
     public void PushState(GameStateType type)
     {
         var state = _states[type];
-
         _stack.Push(state);
         _current = state;
         state.Enter();
