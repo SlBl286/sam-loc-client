@@ -1,4 +1,5 @@
 using Godot;
+using SL.Scripts.Core;
 using SL.Scripts.Enums;
 using SL.Scripts.Event;
 using SL.Scripts.Managers;
@@ -11,16 +12,20 @@ public class LobbyState : GameState
 
     public override async void Enter()
     {
-        GD.Print("Enter Lobby ");
 
         await SceneManager.Instance.ChangeWorld(SceneType.Lobby);
+        NetworkManager.Instance.Socket.Connect("ws://127.0.0.1:8080");
     }
- public override void HandleEvent(object evt)
+    public override void HandleEvent(object evt)
     {
         if (evt is JoinRoomEvent e)
         {
             Machine.Context.RoomId = e.RoomId;
             Machine.ChangeState(GameStateType.Room);
+        }
+        if (evt is RoomListEvent)
+        {
+            EventBus.Publish(evt); 
         }
     }
 

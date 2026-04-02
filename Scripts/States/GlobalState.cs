@@ -19,7 +19,7 @@ public class GlobalState : GameState
         {
             if (n.State == NetworkState.ApiRequesting)
             {
-                Machine.ChangeState(GameStateType.Loading);
+                Machine.PushState(GameStateType.Loading);
             }
             else if (n.State == NetworkState.ApiRequestSucess)
             {

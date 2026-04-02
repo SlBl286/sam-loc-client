@@ -27,9 +27,7 @@ offset_left = 0.3999939
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="CenterContainer" unique_id=715404454]
+[node name="Label" type="Label" parent="CenterContainer" unique_id=1769818404]
 layout_mode = 2
-theme_override_constants/outline_size = 3
-theme_override_font_sizes/font_size = 62
-page = 10.0
-value = 50.0
+theme_override_font_sizes/font_size = 52
+text = "Đang tải...."

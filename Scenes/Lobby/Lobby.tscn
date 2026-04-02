@@ -12,13 +12,34 @@ grow_vertical = 2
 script = ExtResource("1_a15b7")
 
 [node name="Panel" type="Panel" parent="." unique_id=1600201176]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Username" type="Label" parent="Panel" unique_id=717470690]
-layout_mode = 0
-offset_right = 630.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -517.0
 offset_bottom = 135.0
+grow_horizontal = 0
 theme_override_font_sizes/font_size = 52
 text = "username"
+
+[node name="Label" type="Label" parent="Panel" unique_id=505193450]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Button" type="Button" parent="Panel" unique_id=1813957882]
+layout_mode = 0
+offset_left = 769.0
+offset_top = 184.0
+offset_right = 1195.0
+offset_bottom = 307.0
+theme_override_font_sizes/font_size = 52
+text = "Tạo phòng"
