@@ -17,10 +17,10 @@ public partial class SocketClient : Node
 
     public override void _Process(double delta)
     {
+        _socket.Poll();
         if (_socket.GetReadyState() == WebSocketPeer.State.Open)
         {
-            _socket.Poll();
-
+            
             while (_socket.GetAvailablePacketCount() > 0)
             {
                 var packet = _socket.GetPacket();
