@@ -2,6 +2,14 @@
 
 [ext_resource type="Script" uid="uid://2f8m46t2x02v" path="res://Scripts/Views/Lobby.cs" id="1_a15b7"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a15b7"]
+content_margin_left = 120.0
+content_margin_top = 25.0
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="Lobby" type="Control" unique_id=2064088179]
 layout_mode = 3
 anchors_preset = 15
@@ -27,19 +35,34 @@ anchor_right = 1.0
 offset_left = -517.0
 offset_bottom = 135.0
 grow_horizontal = 0
+theme_override_constants/line_spacing = 3
 theme_override_font_sizes/font_size = 52
+theme_override_styles/normal = SubResource("StyleBoxFlat_a15b7")
 text = "username"
 
-[node name="Label" type="Label" parent="Panel" unique_id=505193450]
+[node name="CreateBtn" type="Button" parent="Panel" unique_id=1813957882]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="Button" type="Button" parent="Panel" unique_id=1813957882]
-layout_mode = 0
-offset_left = 769.0
-offset_top = 184.0
-offset_right = 1195.0
-offset_bottom = 307.0
+offset_left = 47.0
+offset_top = 26.0
+offset_right = 473.0
+offset_bottom = 149.0
 theme_override_font_sizes/font_size = 52
 text = "Tạo phòng"
+
+[node name="RoomListContainer" type="HFlowContainer" parent="Panel" unique_id=1472945859]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 180.0
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 10
+
+[node name="QuitBtn" type="Button" parent="Panel" unique_id=1231594388]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 29.0
+offset_right = 1129.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 52
+text = "Thoát"

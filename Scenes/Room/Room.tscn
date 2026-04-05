@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://br8ca47omqbcy"]
+
+[ext_resource type="Script" uid="uid://dnyxsvaej53p" path="res://Scripts/Room.cs" id="1_oouxv"]
+[ext_resource type="PackedScene" uid="uid://d4hrqnoqbk2yk" path="res://Scenes/Card.tscn" id="2_gwy78"]
+
+[node name="Room" type="Node2D" unique_id=615315840]
+script = ExtResource("1_oouxv")
+
+[node name="Card" parent="." unique_id=1072948959 instance=ExtResource("2_gwy78")]
+position = Vector2(824, 529)

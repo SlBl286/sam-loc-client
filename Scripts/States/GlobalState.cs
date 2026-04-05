@@ -10,9 +10,21 @@ public class GlobalState : GameState
 
     public override void HandleEvent(object evt)
     {
-        if (evt is SocketDisconnectedEvent)
+        if (evt is SocketConnectedEvent)
         {
-            Machine.ChangeState(GameStateType.Reconnect);
+            NetworkManager.Instance.Socket.Send(new
+            {
+                type = ClientMessageType.Connected.ToString(),
+                user_id = Machine.Context.UserId
+            });
+        }
+        if (evt is SocketDisconnectedEvent dce)
+        {
+            if (dce.Code == 1006) // 1006 là code khi mất kết nối đột ngột
+                Machine.ChangeState(GameStateType.Reconnect);
+            else 
+                Machine.ChangeState(GameStateType.Login); // quay về lobby nếu bị kick hoặc tự ngắt kết nối
+
         }
 
         if (evt is NetworkStateChangedEvent n)
@@ -25,7 +37,7 @@ public class GlobalState : GameState
             {
                 Machine.PopState(GameStateType.Loading); // tắt loading
             }
-            
+
         }
         if (evt is ShowPopupEvent p)
         {

@@ -42,12 +42,17 @@ public partial class NetworkManager : Node
     void OnConnected()
     {
         SetState(NetworkState.Connected);
-     
+        EventBus.Publish(new SocketConnectedEvent { });
     }
 
-    void OnDisconnected()
+    void OnDisconnected(int code, string reason)
     {
         SetState(NetworkState.Disconnected);
-       
+        EventBus.Publish(new SocketDisconnectedEvent
+        {
+            Code = code,
+            Reason = reason
+        });
+        
     }
 }

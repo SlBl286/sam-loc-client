@@ -18,14 +18,17 @@ public class LobbyState : GameState
     }
     public override void HandleEvent(object evt)
     {
-        if (evt is JoinRoomEvent e)
+        if (evt is JoinRoomEvent jre)
         {
-            Machine.Context.RoomId = e.RoomId;
+            Machine.Context.RoomId = jre.RoomId;
             Machine.ChangeState(GameStateType.Room);
         }
-        if (evt is RoomListEvent)
+        if (evt is RoomListEvent )
         {
-            EventBus.Publish(evt); 
+            
+        }
+        if (evt is PlayerListEvent)
+        {
         }
     }
 

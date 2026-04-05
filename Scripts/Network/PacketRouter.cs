@@ -1,8 +1,7 @@
 using Godot;
 using SL.Scripts.Core;
+using SL.Scripts.Enums;
 using SL.Scripts.Event;
-using SL.Scripts.Models;
-using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 namespace SL.Scripts.Network;
@@ -15,47 +14,53 @@ public partial class PacketRouter : Node
 
         var packet = JsonSerializer.Deserialize<ServerPacket>(json);
 
-        switch (packet.Type)
+        switch (ServerMessageTypeExtensions.FromStr(packet.type))
         {
-            case "join_room":
-                var joinData = JsonSerializer.Deserialize<JoinRoomData>(packet.Data.ToString());
+            case ServerMessageType.PlayerConnected:
+                var connectedData = JsonSerializer.Deserialize<JoinRoomPacket>(json);
                 EventBus.Publish(new JoinRoomEvent
                 {
-                    RoomId = joinData.RoomId,
-                    SeatIndex = joinData.SeatIndex
+                    RoomId = connectedData.room_id,
+                    SeatIndex = connectedData.seat_index
                 });
                 break;
 
-            case "start_game":
-                var startData = JsonSerializer.Deserialize<StartGameData>(packet.Data.ToString());
+            case ServerMessageType.GameStarted:
+                var startData = JsonSerializer.Deserialize<StartGamePacket>(json);
                 EventBus.Publish(new StartGameEvent
                 {
-                    MatchId = startData.MatchId
+                    MatchId = startData.match_id
                 });
                 break;
-            case "room_list":
-                    var roomListData = JsonSerializer.Deserialize<RoomListPacket>(json);
+            case ServerMessageType.PlayerJoinedRoom:
+                var joinData = JsonSerializer.Deserialize<JoinRoomPacket>(json);
+                EventBus.Publish(new JoinRoomEvent
+                {
+                    RoomId = joinData.room_id,
+                    SeatIndex = joinData.seat_index
+                });
+                break;
+            case ServerMessageType.RoomList:
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+
+                var roomListData = JsonSerializer.Deserialize<RoomListPacket>(json, options);
                 EventBus.Publish(new RoomListEvent
                 {
                     Rooms = roomListData.Rooms
+                });
+                break;
+
+            case ServerMessageType.PlayerList:
+                var playerListData = JsonSerializer.Deserialize<PlayerListPacket>(json);
+                EventBus.Publish(new PlayerListEvent
+                {
+                    Players = playerListData.players
                 });
                 break;
         }
     }
 }
 
-internal class RoomListPacket
-{
-    public List<RoomInfo> Rooms { get; set; }
-}
-
-internal class StartGameData
-{
-    public int MatchId { get; set; }
-}
-
-internal class JoinRoomData
-{
-    public int RoomId { get; set; }
-    public int SeatIndex { get; set; }
-}

@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Godot;
 using SL.Scripts.Enums;
 using SL.Scripts.Event;
@@ -9,11 +10,11 @@ public class RoomState : GameState
 {
     public RoomState(StateMachine machine) : base(machine) { }
 
-    public override void Enter()
+    public override async void Enter()
     {
         GD.Print("Join Room: " + Machine.Context.SelectedRoomId);
 
-        SceneManager.Instance.ChangeWorld(SceneType.Room);
+        await SceneManager.Instance.ChangeWorld(SceneType.Room);
     }
     public override void HandleEvent(object evt)
     {
