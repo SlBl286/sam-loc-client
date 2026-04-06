@@ -32,7 +32,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -517.0
+offset_left = -500.0
 offset_bottom = 135.0
 grow_horizontal = 0
 theme_override_constants/line_spacing = 3
@@ -42,10 +42,8 @@ text = "username"
 
 [node name="CreateBtn" type="Button" parent="Panel" unique_id=1813957882]
 layout_mode = 0
-offset_left = 47.0
-offset_top = 26.0
-offset_right = 473.0
-offset_bottom = 149.0
+offset_right = 500.0
+offset_bottom = 135.0
 theme_override_font_sizes/font_size = 52
 text = "Tạo phòng"
 
@@ -61,8 +59,7 @@ theme_override_constants/v_separation = 10
 [node name="QuitBtn" type="Button" parent="Panel" unique_id=1231594388]
 layout_mode = 0
 offset_left = 736.0
-offset_top = 29.0
-offset_right = 1129.0
-offset_bottom = 150.0
+offset_right = 1136.0
+offset_bottom = 135.0
 theme_override_font_sizes/font_size = 52
 text = "Thoát"
