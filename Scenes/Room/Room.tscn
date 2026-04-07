@@ -1,10 +1,104 @@
 [gd_scene format=3 uid="uid://br8ca47omqbcy"]
 
-[ext_resource type="Script" uid="uid://dnyxsvaej53p" path="res://Scripts/Room.cs" id="1_oouxv"]
-[ext_resource type="PackedScene" uid="uid://d4hrqnoqbk2yk" path="res://Scenes/Card.tscn" id="2_gwy78"]
+[ext_resource type="Script" uid="uid://bpxtb07nndlvd" path="res://Scripts/Views/Room.cs" id="1_gwy78"]
+[ext_resource type="PackedScene" uid="uid://dmwsuty2b38aa" path="res://Scenes/Room/Player.tscn" id="2_cg6ad"]
+[ext_resource type="Script" uid="uid://cnl87wq41k526" path="res://Scripts/Views/Hand.cs" id="2_q1h4q"]
 
-[node name="Room" type="Node2D" unique_id=615315840]
-script = ExtResource("1_oouxv")
+[node name="Room" type="Control" unique_id=1911655510]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gwy78")
 
-[node name="Card" parent="." unique_id=1072948959 instance=ExtResource("2_gwy78")]
-position = Vector2(824, 529)
+[node name="Table" type="Control" parent="." unique_id=1736333088]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Players" type="Control" parent="." unique_id=900227389]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerBottom" parent="Players" unique_id=1191116215 instance=ExtResource("2_cg6ad")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.9
+anchor_right = 0.15
+anchor_bottom = 0.9
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="PlayerLeft" parent="Players" unique_id=1339551951 instance=ExtResource("2_cg6ad")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_right = 0.15
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="PlayerTopLeft" parent="Players" unique_id=1042570639 instance=ExtResource("2_cg6ad")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.9
+anchor_right = 0.15
+anchor_bottom = 0.9
+offset_left = 330.0
+offset_top = -819.0
+offset_right = 330.0
+offset_bottom = -819.0
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="PlayerTopRight" parent="Players" unique_id=637917049 instance=ExtResource("2_cg6ad")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.9
+anchor_right = 0.15
+anchor_bottom = 0.9
+offset_left = 954.0
+offset_top = -819.0
+offset_right = 954.0
+offset_bottom = -819.0
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="PlayerRight" parent="Players" unique_id=29689730 instance=ExtResource("2_cg6ad")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.9
+anchor_right = 0.15
+anchor_bottom = 0.9
+offset_left = 1434.0
+offset_top = -458.0
+offset_right = 1434.0
+offset_bottom = -458.0
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="Hand" type="Control" parent="." unique_id=24898644]
+layout_mode = 1
+anchor_left = 0.2
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 200.0
+offset_right = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_q1h4q")
