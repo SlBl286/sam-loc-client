@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://pu6shv5mkqig"]
 
-[ext_resource type="Script" uid="uid://bxx6evptjh3hw" path="res://Scripts/Views/Transition.cs" id="1_o6pqs"]
+[ext_resource type="Script" uid="uid://c4gvop67iwtst" path="res://Scripts/Views/transition.gd" id="1_o6pqs"]
 
 [node name="Transition" type="CanvasLayer" unique_id=1784978898]
 script = ExtResource("1_o6pqs")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1503665571]
+[node name="Overlay" type="ColorRect" parent="." unique_id=1503665571]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0

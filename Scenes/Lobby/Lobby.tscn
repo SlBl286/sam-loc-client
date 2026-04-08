@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dw2k2f05i6mgx"]
 
-[ext_resource type="Script" uid="uid://2f8m46t2x02v" path="res://Scripts/Views/Lobby.cs" id="1_a15b7"]
+[ext_resource type="Script" uid="uid://w2a5t1h6rldl" path="res://Scripts/Views/lobby.gd" id="1_a15b7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a15b7"]
 content_margin_left = 120.0

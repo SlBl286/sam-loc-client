@@ -1,28 +1,24 @@
 [gd_scene format=3 uid="uid://2g8rw3ljs128"]
 
-[ext_resource type="Script" uid="uid://4blli755mmav" path="res://Scripts/Main.cs" id="1_kln2b"]
-[ext_resource type="Script" uid="uid://dc86fg8binmug" path="res://Scripts/Managers/SceneManager.cs" id="2_rgh2o"]
-[ext_resource type="Script" uid="uid://b2ediw7dknadn" path="res://Scripts/Managers/StateMachine.cs" id="3_pbw6q"]
-[ext_resource type="Script" uid="uid://i8s1onpvppj8" path="res://Scripts/Managers/NetworkManager.cs" id="4_rgh2o"]
+[ext_resource type="Script" uid="uid://c4ounew6v0c5b" path="res://Scripts/main.gd" id="1_r150o"]
 
 [node name="Main" type="Node2D" unique_id=1261943765]
-script = ExtResource("1_kln2b")
+script = ExtResource("1_r150o")
 
 [node name="Manager" type="Node" parent="." unique_id=539943548]
 
 [node name="SceneManger" type="Node" parent="Manager" unique_id=1646526119]
-script = ExtResource("2_rgh2o")
 
 [node name="StateMachine" type="Node" parent="Manager" unique_id=554320191]
-script = ExtResource("3_pbw6q")
 
 [node name="NetworkManager" type="Node" parent="Manager" unique_id=368085602]
-script = ExtResource("4_rgh2o")
+
+[node name="PopupManager" type="Node" parent="Manager" unique_id=797027317]
 
 [node name="WorldLayer" type="Node" parent="." unique_id=1686006791]
 
 [node name="UILayer" type="Node" parent="." unique_id=1992725516]
 
-[node name="PopupLayer" type="Node" parent="." unique_id=1989016699]
-
 [node name="LoadingLayer" type="Node" parent="." unique_id=164245886]
+
+[node name="PopupLayer" type="CanvasLayer" parent="." unique_id=1661370474]
