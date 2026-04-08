@@ -1,7 +1,11 @@
 extends Node
 class_name EventBus
 
+static var Instance
 var _events: Dictionary = {}
+
+func _ready():
+    Instance = self
 
 func subscribe(event_type: String, callback: Callable) -> void:
     if not _events.has(event_type):

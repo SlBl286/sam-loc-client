@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://2g8rw3ljs128"]
 
 [ext_resource type="Script" uid="uid://c4ounew6v0c5b" path="res://Scripts/main.gd" id="1_r150o"]
+[ext_resource type="Script" uid="uid://v0ac2im23240" path="res://Scripts/Managers/scene_manger.gd" id="2_idj7w"]
+[ext_resource type="Script" uid="uid://jx24du6jc17a" path="res://Scripts/Managers/state_machine.gd" id="3_kln2b"]
 
 [node name="Main" type="Node2D" unique_id=1261943765]
 script = ExtResource("1_r150o")
@@ -8,8 +10,10 @@ script = ExtResource("1_r150o")
 [node name="Manager" type="Node" parent="." unique_id=539943548]
 
 [node name="SceneManger" type="Node" parent="Manager" unique_id=1646526119]
+script = ExtResource("2_idj7w")
 
 [node name="StateMachine" type="Node" parent="Manager" unique_id=554320191]
+script = ExtResource("3_kln2b")
 
 [node name="NetworkManager" type="Node" parent="Manager" unique_id=368085602]
 
